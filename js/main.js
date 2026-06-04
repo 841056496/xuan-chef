@@ -4,6 +4,17 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
+  // ---------- CDN 加速: GitHub Pages → jsDelivr (国内有节点) ----------
+  if (location.hostname.includes('github.io')) {
+    const CDN_BASE = 'https://cdn.jsdelivr.net/gh/841056496/xuan-chef@main';
+    document.querySelectorAll('img').forEach(img => {
+      const src = img.getAttribute('src');
+      if (src && src.startsWith('images/')) {
+        img.src = CDN_BASE + '/' + src;
+      }
+    });
+  }
+
   // ---------- PRELOADER ----------
   const preloader = document.getElementById('preloader');
   if (preloader) {
